@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, Building2, Check, Copy, Loader2 } from "lucide-react";
+import { ArrowLeft, Building2, CalendarDays, Check, CheckCircle2, Copy, Hash, Loader2 } from "lucide-react";
 
 import { SelectorEspacio } from "@/components/SelectorEspacio";
 import { Calendario } from "@/components/Calendario";
@@ -21,13 +21,13 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Reservas del Edificio · SUM, Parrilla y Lavadero" },
+      { title: "Reservas Edificio Rosales 2755 · SUM, Parrilla y Lavadero" },
       {
         name: "description",
         content:
-          "Consultá la disponibilidad y reservá el SUM, la Parrilla o el Lavadero del edificio desde el celular en pocos pasos.",
+          "Consultá la disponibilidad y reservá el SUM, la Parrilla o el Lavadero del Edificio Rosales 2755 desde el celular en pocos pasos.",
       },
-      { property: "og:title", content: "Reservas del Edificio" },
+      { property: "og:title", content: "Reservas Edificio Rosales 2755" },
       {
         property: "og:description",
         content: "Reservá el SUM, la Parrilla o el Lavadero del edificio desde tu celular.",
@@ -176,7 +176,7 @@ function Index() {
           <Building2 className="size-5" strokeWidth={2} />
           <span className="text-xs font-semibold tracking-[0.14em] uppercase">Reservas</span>
         </div>
-        <h1 className="mt-1 text-2xl font-bold tracking-tight">Reservas del Edificio</h1>
+        <h1 className="mt-1 text-2xl font-bold tracking-tight">Reservas Edificio Rosales 2755</h1>
       </header>
 
       {paso === "espacio" && (
@@ -185,6 +185,45 @@ function Index() {
             Elegí el espacio que querés reservar.
           </p>
           <SelectorEspacio seleccionado={espacio} onSeleccionar={elegirEspacio} />
+
+          <div className="mt-6 rounded-2xl border border-border bg-secondary p-5">
+            <h2 className="text-sm font-semibold tracking-tight text-foreground">¿Cómo funciona?</h2>
+            <ol className="mt-4 space-y-3">
+              <li className="flex items-start gap-3">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-background text-xs font-semibold text-primary">
+                  <Building2 className="size-4" />
+                </span>
+                <span className="text-sm text-secondary-foreground">
+                  Elegí entre el SUM, la Parrilla o el Lavadero.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-background text-xs font-semibold text-primary">
+                  <CalendarDays className="size-4" />
+                </span>
+                <span className="text-sm text-secondary-foreground">
+                  Seleccioná el día y las horas consecutivas que necesites.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-background text-xs font-semibold text-primary">
+                  <Hash className="size-4" />
+                </span>
+                <span className="text-sm text-secondary-foreground">
+                  Ingresá tu departamento, por ejemplo <span className="font-semibold">5A</span>.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-background text-xs font-semibold text-primary">
+                  <CheckCircle2 className="size-4" />
+                </span>
+                <span className="text-sm text-secondary-foreground">
+                  Guardá el código de cancelación que recibís al confirmar.
+                </span>
+              </li>
+            </ol>
+          </div>
+
           <Link
             to="/cancelar"
             className="tap mt-6 flex w-full items-center justify-center rounded-2xl border border-border bg-card py-4 text-sm font-semibold text-secondary-foreground transition-colors active:bg-secondary"
