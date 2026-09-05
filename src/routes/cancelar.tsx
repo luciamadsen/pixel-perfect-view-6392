@@ -2,7 +2,7 @@ import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowLeft, Check } from "lucide-react";
 
-import { buscarReserva, cancelarReserva } from "@/lib/reservas.client";
+import { buscarReserva, cancelarReserva } from "@/lib/reservas.acciones";
 import { fechaLarga, hh } from "@/lib/reservas";
 
 export const Route = createFileRoute("/cancelar")({

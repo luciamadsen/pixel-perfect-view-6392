@@ -6,7 +6,7 @@ import { ArrowLeft, Building2, CalendarDays, Check, CheckCircle2, Copy, Hash, Lo
 import { SelectorEspacio } from "@/components/SelectorEspacio";
 import { Calendario } from "@/components/Calendario";
 import { AgendaHoraria } from "@/components/AgendaHoraria";
-import { crearReserva } from "@/lib/reservas.client";
+import { crearReserva } from "@/lib/reservas.acciones";
 import {
   fechaLarga,
   hh,
