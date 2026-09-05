@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, Building2, Check, Copy, Loader2 } from "lucide-react";
+import { ArrowLeft, Building2, CalendarDays, Check, CheckCircle2, Clock, Copy, Hash, Loader2 } from "lucide-react";
 
 import { SelectorEspacio } from "@/components/SelectorEspacio";
 import { Calendario } from "@/components/Calendario";

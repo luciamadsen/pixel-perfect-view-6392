@@ -9,7 +9,7 @@ import { fechaLarga, hh } from "@/lib/reservas";
 export const Route = createFileRoute("/cancelar")({
   head: () => ({
     meta: [
-      { title: "Cancelar una reserva · Reservas del Edificio" },
+      { title: "Cancelar una reserva · Reservas Edificio Rosales 2755" },
       {
         name: "description",
         content:
