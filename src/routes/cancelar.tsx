@@ -1,9 +1,8 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { ArrowLeft, Check } from "lucide-react";
 
-import { buscarReserva, cancelarReserva } from "@/lib/reservas.functions";
+import { buscarReserva, cancelarReserva } from "@/lib/reservas.client";
 import { fechaLarga, hh } from "@/lib/reservas";
 
 export const Route = createFileRoute("/cancelar")({
@@ -36,8 +35,8 @@ type Encontrada = {
 
 function CancelarPagina() {
   const router = useRouter();
-  const buscar = useServerFn(buscarReserva);
-  const cancelar = useServerFn(cancelarReserva);
+  const buscar = buscarReserva;
+  const cancelar = cancelarReserva;
 
   const [departamento, setDepartamento] = useState("");
   const [codigo, setCodigo] = useState("");
@@ -52,7 +51,7 @@ function CancelarPagina() {
     setCargando(true);
     setError(null);
     try {
-      const res = await buscar({ data: { departamento, codigo } });
+      const res = await buscar({ departamento, codigo });
       if (res.ok) setReserva(res.reserva);
       else setError("No encontramos una reserva con esos datos");
     } finally {
@@ -63,7 +62,7 @@ function CancelarPagina() {
   async function onCancelar() {
     setCargando(true);
     try {
-      const res = await cancelar({ data: { departamento, codigo } });
+      const res = await cancelar({ departamento, codigo });
       if (res.ok) {
         setCancelada(true);
         router.invalidate();

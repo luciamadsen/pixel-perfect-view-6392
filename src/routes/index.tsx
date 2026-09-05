@@ -1,13 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, Building2, CalendarDays, Check, CheckCircle2, Copy, Hash, Loader2 } from "lucide-react";
 
 import { SelectorEspacio } from "@/components/SelectorEspacio";
 import { Calendario } from "@/components/Calendario";
 import { AgendaHoraria } from "@/components/AgendaHoraria";
-import { crearReserva } from "@/lib/reservas.functions";
+import { crearReserva } from "@/lib/reservas.client";
 import {
   fechaLarga,
   hh,
@@ -64,7 +63,7 @@ function Index() {
   const [copiado, setCopiado] = useState(false);
 
   const agendaRef = useRef<HTMLDivElement>(null);
-  const enviar = useServerFn(crearReserva);
+
 
   const { data: reservas = [], refetch } = useQuery({
     ...reservasMesQuery(espacio ?? "SUM", anio, mes),
@@ -138,8 +137,12 @@ function Index() {
     if (!espacio || !fecha || inicio === null || fin === null) return;
     setGuardando(true);
     try {
-      const res = await enviar({
-        data: { departamento, espacio, fecha, horaInicio: inicio, horaFin: fin },
+      const res = await crearReserva({
+        departamento,
+        espacio,
+        fecha,
+        horaInicio: inicio,
+        horaFin: fin,
       });
       if (res.ok) {
         setConfirmada(res.reserva);
